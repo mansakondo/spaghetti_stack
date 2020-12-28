@@ -1,9 +1,7 @@
 # SpaghettiStack
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/spaghetti_stack`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
-
+This is a Ruby implementation of a [SpaghettiStack](https://en.wikipedia.org/wiki/Parent_pointer_tree)(also called *parent pointer tree* or *cactus stack*). A SpaghettiStack can be thought as a linked list where each element (call nodes) keeps a reference pointing to their parent (possibly null), but not to their children. Which means that a node can only access to it's parent, but not it's children. 
+Another particularity of this kind of stack, is that when a node is popped, they're kept in-memory instead of being destroyed, thus preserving the link to it's parent. That's why this data structure is used by compilers to create symbol tables for each lexical scopes, because it allows them to revisit previous scopes one scope at the time to resolve references.
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -22,7 +20,26 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+require "spaghetti_stack"
+
+scopes = SpaghettiStack.new(:class)
+
+p scopes.root == :class # => true
+
+scopes.push(:def)
+scopes.push(:block)
+p scopes.top == :block # => true
+
+p scopes # => (:class <~ :def <~ :block)
+
+scopes.pop
+scopes.pop
+p scopes.root == scopes.top # => true
+
+p scopes.visited_nodes # => [:def, :block]
+p scopes # => (:class)
+```
 
 ## Development
 
