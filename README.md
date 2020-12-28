@@ -31,14 +31,14 @@ scopes.push(:def)
 scopes.push(:block)
 p scopes.top.data == :block # => true
 
-p scopes # => (:class <~ :def <~ :block)
+p scopes # => (class <~ def <~ block)
 
 scopes.pop
 scopes.pop
 p scopes.root == scopes.top # => true
 
 p scopes.visited_nodes.map(&:data) # => [:block, :def]
-p scopes # => (:class)
+p scopes # => (class)
 ```
 
 ## Development
