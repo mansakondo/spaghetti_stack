@@ -8,6 +8,18 @@ class SpaghettiStackTest < Minitest::Test
   end
 
   def test_it_does_something_useful
-    assert false
+    scopes = SpaghettiStack.new(:class)
+
+    assert_equal :class, scopes.root.data
+
+    scopes.push(:def)
+    scopes.push(:block)
+    assert_equal :block, scopes.top.data
+
+    scopes.pop
+    scopes.pop
+    assert_equal true, scopes.root == scopes.top
+
+    assert_equal [:block, :def], scopes.visited_nodes.map(&:data)
   end
 end

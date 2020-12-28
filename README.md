@@ -25,11 +25,11 @@ require "spaghetti_stack"
 
 scopes = SpaghettiStack.new(:class)
 
-p scopes.root == :class # => true
+p scopes.root.data == :class # => true
 
 scopes.push(:def)
 scopes.push(:block)
-p scopes.top == :block # => true
+p scopes.top.data == :block # => true
 
 p scopes # => (:class <~ :def <~ :block)
 
@@ -37,7 +37,7 @@ scopes.pop
 scopes.pop
 p scopes.root == scopes.top # => true
 
-p scopes.visited_nodes # => [:def, :block]
+p scopes.visited_nodes.map(&:data) # => [:block, :def]
 p scopes # => (:class)
 ```
 
