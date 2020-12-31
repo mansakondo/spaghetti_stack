@@ -66,8 +66,8 @@ class SpaghettiStack
       else
         output = " <~ #{data}" + output
       end
-
-      super
     end
+
+    super
   end
 end
