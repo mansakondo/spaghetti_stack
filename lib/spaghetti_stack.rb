@@ -25,6 +25,8 @@ class SpaghettiStack
     @top = node
   end
 
+  alias << push
+
   def pop
     node   = top
     parent = node.parent
