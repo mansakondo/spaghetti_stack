@@ -13,7 +13,7 @@ class SpaghettiStack
     end
 
     def update(data)
-      return self if data == @data
+      return @data if @data.frozen?
       @data = data
     end
   end
