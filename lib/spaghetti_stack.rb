@@ -11,6 +11,11 @@ class SpaghettiStack
       @data = data
       @parent = parent
     end
+
+    def update(data)
+      return self if data == @data
+      @data = data
+    end
   end
 
   attr_reader :root, :top
