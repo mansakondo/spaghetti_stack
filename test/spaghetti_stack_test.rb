@@ -22,6 +22,10 @@ class SpaghettiStackTest < Minitest::Test
 
     assert_equal [:block, :def], scopes.visited_nodes.map(&:data)
 
+    scopes.top.update(:module)
+    assert_equal :class, scopes.top.data
+
+    scopes.push([:class])
     scopes.top.update :module
     assert_equal :module, scopes.top.data
   end
