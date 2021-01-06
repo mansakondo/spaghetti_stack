@@ -7,7 +7,7 @@ Another particularity of this kind of stack is that when nodes are popped, they'
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'spaghetti_stack', '~> 0.1.2'
+gem 'spaghetti_stack'
 ```
 
 And then execute:
